@@ -10,7 +10,7 @@ var map = new mapboxgl.Map({
     style: 'mapbox://styles/shih000/cjlg7flfn4fiz2sl8101fx5rj',
     center: [position.lng, position.lat], 
     // zoom: 12 //starting zoom
-    minZoom: 12,
+    minZoom: 11.5,
     maxZoom: 15
 });
 
@@ -26,7 +26,7 @@ map.on('load', function() {
     'paint': {
         'circle-radius': [
             "interpolate", ["linear"], ["zoom"],
-            12, 5.5, 15, 8.5,
+            11.5, 5.5, 15, 8.5,
         ],
         'circle-color': '#00704a',
         'circle-opacity': 0.6
@@ -43,7 +43,7 @@ map.on('load', function() {
     'paint': {
         'circle-radius': [
             "interpolate", ["linear"], ["zoom"],
-            12, 5.5, 15, 8.5,
+            11.5, 5.5, 15, 8.5,
         ],
         'circle-color': '#6AADFA',
         'circle-opacity': 0.7
@@ -51,12 +51,12 @@ map.on('load', function() {
     });
 });
 
-  //This is for the heatmap.
+//adding heatmaps from same source.
 map.on('load', function() {
     // Add a geojson point source.
     // Heatmap layers also work with a vector tile source.
     map.addLayer({
-        "id": "Heatmap2",
+        "id": "Heatmap S",
         "type": "heatmap",
         "source": {
             "type": "geojson",
@@ -81,19 +81,19 @@ map.on('load', function() {
             // Adjust the heatmap radius by zoom level
             "heatmap-radius": [
                 "interpolate", ["linear"],["zoom"],
-                12, 25, 15, 6
+                11.5, 28, 15, 6
             ],
             // Transition from heatmap to circle layer by zoom level
             "heatmap-opacity": [
                 "interpolate",
                 ["linear"],
                 ["zoom"],
-                12, 0.7, 14.5, 0
+                11.5, 0.7, 14.5, 0
             ],
         }
     });
     map.addLayer({
-        "id": "Heatmap",
+        "id": "Heatmap H",
         "type": "heatmap",
         "source": {
             "type": "geojson",
@@ -123,21 +123,21 @@ map.on('load', function() {
             // Adjust the heatmap radius by zoom level
             "heatmap-radius": [
                 "interpolate", ["linear"],["zoom"],
-                12, 25, 15, 6
+                11.5, 28, 15, 6
             ],
             // Transition from heatmap to circle layer by zoom level
             "heatmap-opacity": [
                 "interpolate",
                 ["linear"],
                 ["zoom"],
-                12, 0.7, 14.5, 0
+                11.5, 0.7, 14.5, 0
             ],
         }
     });
 });
 
 //add heatmap button
-var toggleableLayerIds = ['Heatmap','Heatmap2'];
+var toggleableLayerIds = ['Heatmap H','Heatmap S'];
 
 for (var i = 0; i < toggleableLayerIds.length; i++) {
     var id = toggleableLayerIds[i];
