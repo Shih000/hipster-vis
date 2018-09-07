@@ -1,3 +1,22 @@
+//Change color of active/selected city-button
+
+// Get the container element
+var btnContainer = document.getElementById("button-container");
+
+// Get all buttons with class="btn" inside the container
+var btns = btnContainer.getElementsByClassName("city-button");
+
+// Loop through the buttons and add the active class to the current/clicked button
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+
+
+
 //mapbox token
 mapboxgl.accessToken='pk.eyJ1Ijoic2hpaDAwMCIsImEiOiJjamtubGNpd3kwOGhtM3ZwMmRjMXgzd2NuIn0.wNTCjYererFafy4yChuKdw'; 
 
